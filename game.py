@@ -2,6 +2,8 @@
 from hparams import board_width, count_len
 
 class State:
+    board_width = board_width
+
     def __init__(self, pieces=None, enemy_pieces=None):
         self.pieces = pieces if pieces != None else [0] * (board_width ** 2)
         self.enemy_pieces = enemy_pieces if enemy_pieces != None else [0] * (board_width ** 2)
@@ -25,7 +27,7 @@ class State:
         for j in range(board_width):
             for i in range(board_width):
                 if is_comp(i, j, 1, 0) or is_comp(i, j, 0, 1) or \
-                        is_comp(i, j, 1, -1) or is_comp(i, j, -1, 1):
+                        is_comp(i, j, 1, 1) or is_comp(i, j, -1, 1):
                     return True
         return False
 
